@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration                         // это конфигурационный файл
 @ComponentScan("ru.mosi.springcourse") // сканировать данный пакет на наличие бинов
@@ -27,12 +28,15 @@ public class SpringConfig implements WebMvcConfigurer {  // WebMvcConfigurer д�
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+        templateResolver.setCharacterEncoding("UTF-8");
         templateResolver.setApplicationContext(applicationContext);
         templateResolver.setPrefix("/WEB-INF/views/");  //где находится представление
         templateResolver.setSuffix(".html");   //расширение представлений
+        templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setCacheable(true);
         return templateResolver;
     }
-
+// https://ru.stackoverflow.com/questions/1223856/%D0%A1%D0%B1%D0%BE%D0%B9-%D0%BA%D0%BE%D0%B4%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B8-tomcat
     @Bean
     public SpringTemplateEngine templateEngine() {  // определяем движок шаблонизатора
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
@@ -46,5 +50,6 @@ public class SpringConfig implements WebMvcConfigurer {  // WebMvcConfigurer д�
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
+        resolver.setContentType("text/html; charset=UTF-8");
     }
 }
