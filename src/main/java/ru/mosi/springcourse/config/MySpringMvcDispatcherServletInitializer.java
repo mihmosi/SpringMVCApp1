@@ -13,10 +13,10 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
     // Добавление конфигурации, в которой инициализируем ViewResolver, для корректного отображения jsp.
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[] {SpringConfig.class};  // локация кнфигурации
+        return new Class[] {SpringConfig.class};  // локация конфигурации
     }
 
-    /* Данный метод указывает url, на котором будет базироваться п риложение */
+    /* Данный метод указывает url, на котором будет базироваться приложение */
     @Override
     protected String[] getServletMappings() {
         return new String[] {"/"};  // все запросы посылаем на сервлет
