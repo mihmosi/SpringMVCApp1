@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Hello</title>
 </head>
 <body>
-<h2 align="center" >Hello Misha!!!</h2>
-<button><a href="/first/goodbye">Нажми меня на Пока</a></button> or <a href="/exit">Exit</a>
-<a href="/first/hello?name=Tom&surname=Jones">Request with params</a>
+<h2 align="center">Hello Misha!!!</h2>
+<button><a href="/first/goodbye">Нажми меня на Пока</a></button>
+or <a href="/exit">Exit</a>
+<a href="/first/hello?name=Tom&surname=Jones">Жми</a>
+
+<p th:text="${message}"></p>
+
 </body>
 </html>
