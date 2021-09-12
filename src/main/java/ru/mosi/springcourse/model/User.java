@@ -1,10 +1,14 @@
 package ru.mosi.springcourse.model;
 
 public class User {
+
     private int id;
     private String name;
     private String lastname;
     private int age;
+
+    public User() {
+    }
 
     public User(int id, String name, String lastname, int age) {
         this.id = id;
