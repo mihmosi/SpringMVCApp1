@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.mosi.springcourse.dao.UserDao;
-import ru.mosi.springcourse.dao.UserDaoImpl;
 import ru.mosi.springcourse.model.User;
 import ru.mosi.springcourse.service.UserServiceImpl;
 
@@ -60,9 +58,9 @@ public class UsersController {
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") int id){
-userService.delete(id);
-return "redirect:/users";
+    public String delete(@PathVariable("id") int id) {
+        userService.delete(id);
+        return "redirect:/users";
     }
 
 }

@@ -14,10 +14,10 @@ public class UserDaoImpl implements UserDao {
 
     {
         users = new ArrayList<>();
-        users.add(new User(++USER_COUNT, "Ivan", "Sidirov", 25));
-        users.add(new User(++USER_COUNT, "Petr", "Ivanov", 34));
-        users.add(new User(++USER_COUNT, "Mikhail", "Semin", 55));
-        users.add(new User(++USER_COUNT, "Vasiliy", "Krymov", 45));
+        users.add(new User(++USER_COUNT, "Ivan", "Sidirov", "email1@email.ru"));
+        users.add(new User(++USER_COUNT, "Petr", "Ivanov", "email2@email.ru"));
+        users.add(new User(++USER_COUNT, "Mikhail", "Semin", "email3@email.ru"));
+        users.add(new User(++USER_COUNT, "Vasiliy", "Krymov", "email4@email.ru"));
     }
 
     @Override
@@ -44,7 +44,7 @@ public class UserDaoImpl implements UserDao {
 
         userToBeUpdate.setName(updateUser.getName());
         userToBeUpdate.setLastname(updateUser.getLastname());
-        userToBeUpdate.setAge(updateUser.getAge());
+        userToBeUpdate.setEmail(updateUser.getEmail());
     }
 
     @Override

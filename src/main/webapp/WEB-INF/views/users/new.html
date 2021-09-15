@@ -3,23 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Новый пользователь</title>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid lightseagreen;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: lightblue;
+        }
+
+        .b1 {
+            background: red;
+            color: white;
+            font-size: 9pt;
+        }
+
+        .b2 {
+            background: navy;
+            color: white;
+            font-size: 9pt;
+        }
+
+        .b3 {
+            background: navy;
+            color: white;
+            font-size: 9pt;
+        }
+    </style>
 </head>
 <body>
-<!--опсываем метод=== на какой адрес отпр-ся формы =====  ключ объекта-->
-<form th:method="POST" th:action="@{/users}" th:object="${user}">
-    <!--поля для объекта-->
-    <label for="name">Введите имя</label>
-    <input type="text" th:field="*{name}" id="name"/>
-    <br/>
-    <label for="lastname">Фамилия</label>
-    <input type="text" th:field="*{lastname}" id="lastname"/>
-    <br/>
-    <label for="age">Возраст</label>
-    <input type="text" th:field="*{age}" id="age"/>
-    <br/>
-    <input type="submit" value="Create!">
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Lastname</td>
+        <td>Email</td>
+        <td>Actions</td>
+    </tr>
+    <!--опсываем метод=== на какой адрес отпр-ся формы =====  ключ объекта-->
+    <form th:method="POST" th:action="@{/users}" th:object="${user}">
+        <tr>
+            <!--поля для объекта-->
+            <td><label for="name">Введите имя</label>
+                <input type="text" th:field="*{name}" id="name"/></td>
 
-</form>
+            <td><label for="lastname">Фамилия</label>
+                <input type="text" th:field="*{lastname}" id="lastname"/></td>
 
+            <td><label for="email">Электронная почта</label>
+                <input type="text" th:field="*{email}" id="email"/></td>
+
+            <td><input type="submit" value="Create!"></td>
+        </tr>
+
+    </form>
+</table>
 </body>
 </html>

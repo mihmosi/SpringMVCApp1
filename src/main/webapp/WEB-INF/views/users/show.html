@@ -3,13 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Человек</title>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid lightseagreen;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: lightblue;
+        }
+
+        .b1 {
+            background: red;
+            color: white;
+            font-size: 9pt;
+        }
+
+        .b2 {
+            background: navy;
+            color: white;
+            font-size: 9pt;
+        }
+
+        .b3 {
+            background: navy;
+            color: white;
+            font-size: 9pt;
+        }
+    </style>
 </head>
 <body>
-<p th:text="${user.getName()}">VALUE</p>
-<p th:text="${user.getId()}">VALUE</p>
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Lastname</td>
+        <td>Email</td>
+        <td>Actions</td>
+    </tr>
+    <tr>
+        <td><p th:text="${user.getId()}">VALUE</p></td>
+        <td><p th:text="${user.getName()}">VALUE</p></td>
+        <td><p th:text="${user.getLastname()}">VALUE</p></td>
+        <td><p th:text="${user.getEmail()}">VALUE</p></td>
 
-<a th:href="@{/users/{id}/edit(id=${user.getId})}">Edit</a>
-
+        <td><a th:href="@{/users/{id}/edit(id=${user.getId})}">Edit</a></td>
+    </tr>
+</table>
 <form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId})}">
     <input type="submit" value="Delete">
 </form>

@@ -39,5 +39,4 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
         return new String[]{"/"};  // все запросы посылаем на сервлет
     }
 
-
 }

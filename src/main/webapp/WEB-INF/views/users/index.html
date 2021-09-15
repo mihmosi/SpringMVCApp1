@@ -3,16 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <title>Все люди</title>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid lightseagreen;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: lightblue;
+        }
+
+        .b1 {
+            background: red;
+            color: white;
+            font-size: 9pt;
+        }
+
+        .b2 {
+            background: navy;
+            color: white;
+            font-size: 9pt;
+        }
+
+        .b3 {
+            background: navy;
+            color: white;
+            font-size: 9pt;
+        }
+    </style>
 </head>
 <body>
 <!--с атрибутом each выыодится список-->
-<div th:each="user : ${users}">
 
-    <a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getName()}">user</a>
-</div>
+<!--<div th:each="user : ${users}">-->
+
+<!--    <a th:href="@{/users/{id}(id=${user.getId()})}"-->
+<!--       th:text="${user.getName()}">user</a>-->
+<!--</div>-->
+<!--<br>-->
+<!--<hr>-->
+<!--<a href="/users/new">Create new user</a>-->
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Lastname</td>
+        <td>Email</td>
+        <td>Actions</td>
+    </tr>
+
+    <tr th:each="user:${users}">
+        <td><p th:text="${user.id}"></p></td>
+        <td><a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.name}"><p th:text="${user.name}"></p></a></td>
+        <td><p th:text="${user.lastname}"></p></td>
+        <td><p th:text="${user.email}"></p></td>
+        <td>
+
+            <form th:method="GET" th:action="@{/users/{id}/edit(id=${user.getId})}">
+                <input type="submit" class="b2" value="Update">
+            </form>
+
+            <form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId})}">
+                <input type="submit" class="b1" value="Delete">
+            </form>
+
+        </td>
+    </tr>
+</table>
 <br>
-<hr>
-<a href="/users/new">Create new user</a>
+<form th:method="GET" th:action="@{users/new}">
+    <input type="submit" th:class="b3" value="Create new user">
+</form>
+<br/>
 
 </body>
 </html>
